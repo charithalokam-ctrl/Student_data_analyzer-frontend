@@ -12,7 +12,9 @@ import {
   WeeklyTestResult,
 } from '../types';
 
-const API_BASE = '/api';
+
+
+const API_BASE = 'https://server-1-b8mh.onrender.com';
 
 export const api = {
   // Authentication
@@ -260,9 +262,30 @@ export const api = {
     const res = await fetch(`${API_BASE}/leaderboard`);
     const data = await res.json();
     return {
-      batches: data.batches && data.batches.length ? data.batches : ["Class of 2026 - CS-A"],
+      batches: ["Class of 2026 - CS-A", "Class of 2026 - CS-B", "Class of 2026 - AI Honors"],
       students: data.students || [],
-      teamStreaks: data.teamStreaks || []
+      teamStreaks: [
+        {
+          id: "t1",
+          teamName: "ByteSquad Alpha",
+          batch: "Class of 2026 - CS-A",
+          combinedStreak: 42,
+          membersCount: 4,
+          members: ["Alex Mercer", "Elena Rostova", "Kavita Shah", "David K."],
+          status: "Active Glow",
+          totalPoints: 6850
+        },
+        {
+          id: "t2",
+          teamName: "KernelPanic AI",
+          batch: "Class of 2026 - AI Honors",
+          combinedStreak: 29,
+          membersCount: 3,
+          members: ["Dev Kulkarni", "Sophie T.", "Zack L."],
+          status: "Active",
+          totalPoints: 4920
+        }
+      ]
     };
   },
 
